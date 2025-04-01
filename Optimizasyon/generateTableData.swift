@@ -6,9 +6,17 @@
 //
 
 import Foundation
+import SwiftUI
+
+struct TableCell: Identifiable {
+    var id = UUID()
+    var content: String
+    var color: Color = .white
+}
 
 
-func generateTableData(yValues: [String]) -> [[TableCell]] {
+
+func generateTableData(yValues: [String], constraintCount: Int) -> [[TableCell]] {
     var data: [[TableCell]] = []
     
     // 1. Header Row
@@ -33,36 +41,27 @@ func generateTableData(yValues: [String]) -> [[TableCell]] {
     }
     data.append(titleRow)
     
-    // 3. Row 1
-    var row1: [TableCell] = [
-        TableCell(content: "-2"),
-        TableCell(content: "x₄"),
-        TableCell(content: "20")
-    ]
-    for _ in yValues {
-        row1.append(TableCell(content: "\(Int.random(in: 0...2))"))
+    // 3. Constraint Rows
+    for i in 0..<constraintCount {
+        var row: [TableCell] = [
+            TableCell(content: "0"), // Example content for C_B
+            TableCell(content: "x\(i + 1)"), // Example content for T_v
+            TableCell(content: "\(Int.random(in: 10...30))") // Example content for X_B
+        ]
+        for _ in yValues {
+            row.append(TableCell(content: "\(Int.random(in: 0...2))"))
+        }
+        data.append(row)
     }
-    data.append(row1)
-    
-    // 4. Row 2
-    var row2: [TableCell] = [
-        TableCell(content: "1"),
-        TableCell(content: "x₂"),
-        TableCell(content: "12")
-    ]
-    for _ in yValues {
-        row2.append(TableCell(content: "\(Int.random(in: 0...2))"))
-    }
-    data.append(row2)
 
     // 5. Bottom Z-row
     var zRow: [TableCell] = [
-        TableCell(content: "-28", color: .gray),
+        TableCell(content: "0", color: .gray),
         TableCell(content: "", color: .clear),
         TableCell(content: "", color: .clear)
     ]
     for _ in yValues {
-        zRow.append(TableCell(content: "\(Int.random(in: -6...0))"))
+        zRow.append(Int(0).description.isEmpty ? TableCell(content: "0", color: .init(red: 0.9, green: 0.9, blue: 0.9)) : TableCell(content: "0"))
     }
     data.append(zRow)
 
