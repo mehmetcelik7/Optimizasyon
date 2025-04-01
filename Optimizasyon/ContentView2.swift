@@ -28,19 +28,30 @@ struct ContentView: View {
                             let cell = dynamicData[rowIndex][cellIndex]
                             if rowIndex == 0 && cellIndex == 0 {
                                 TextField("", text: $dynamicData[rowIndex][cellIndex].content)
-                                    .frame(minWidth: 315, maxWidth: .infinity, minHeight: 45)                               .multilineTextAlignment(.center)
+                                    .frame(minWidth: 45, maxWidth: .infinity, minHeight: 45)
+                                    .multilineTextAlignment(.center)
                                     .background(cell.color)
                                     .border(Color.black, width: 1)
+                                    
                             } else if rowIndex == 0 && (cellIndex == 1 || cellIndex == 2) {
-                                EmptyView()
+                                TextField("", text: $dynamicData[rowIndex][cellIndex].content)
+                                    .frame(minWidth: 45, maxWidth: .infinity, minHeight: 45)
+                                    .multilineTextAlignment(.center)
+                                    .background(cell.color)
+                                    .border(Color.black, width: 1)
+                                
                             } else if rowIndex == dynamicData.count - 1 && cellIndex == 0 {
                                 TextField("", text: $dynamicData[rowIndex][cellIndex].content)
-                                    .frame(width: 360, height: 45)
+                                    .frame(minWidth: 45, maxWidth: .infinity, minHeight: 45)
                                     .multilineTextAlignment(.center)
                                     .background(cell.color)
                                     .border(Color.black, width: 1)
                             } else if rowIndex == dynamicData.count - 1 && (cellIndex == 1 || cellIndex == 2) {
-                                EmptyView()
+                                TextField("", text: $dynamicData[rowIndex][cellIndex].content)
+                                    .frame(minWidth: 45, maxWidth: .infinity, minHeight: 45)
+                                    .multilineTextAlignment(.center)
+                                    .background(cell.color)
+                                    .border(Color.black, width: 1)
                             } else {
                                 TextField("", text: $dynamicData[rowIndex][cellIndex].content)
                                     .frame(minWidth: 45, maxWidth: .infinity, minHeight: 45)

@@ -22,8 +22,8 @@ func generateTableData(yValues: [String], constraintCount: Int) -> [[TableCell]]
     // 1. Header Row
     var headerRow: [TableCell] = [
         TableCell(content: "TABLO I", color: .blue),
-        TableCell(content: "", color: .clear),
-        TableCell(content: "", color: .clear)
+        TableCell(content: "TABLO I", color: .blue),
+        TableCell(content: "TABLO I", color: .blue)
     ]
     for value in yValues {
         headerRow.append(TableCell(content: value))
@@ -56,9 +56,9 @@ func generateTableData(yValues: [String], constraintCount: Int) -> [[TableCell]]
 
     // 5. Bottom Z-row
     var zRow: [TableCell] = [
-        TableCell(content: "0", color: .gray),
-        TableCell(content: "", color: .clear),
-        TableCell(content: "", color: .clear)
+        TableCell(content: "", color: .gray),
+        TableCell(content: "", color: .gray),
+        TableCell(content: "", color: .gray)
     ]
     for _ in yValues {
         zRow.append(Int(0).description.isEmpty ? TableCell(content: "0", color: .init(red: 0.9, green: 0.9, blue: 0.9)) : TableCell(content: "0"))
